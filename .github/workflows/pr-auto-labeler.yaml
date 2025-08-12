@@ -1,0 +1,22 @@
+name: PR Auto Labeler
+
+on:
+  pull_request_target:
+    types: [opened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  apply-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply labels
+        uses: jimschubert/labeler-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log result
+        if: always()
+        run: |
+          echo "Labeled PR #${{ github.event.pull_request.number }} in ${{ github.repository }}"
