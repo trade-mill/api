@@ -12,10 +12,12 @@ jobs:
   apply-labels:
     runs-on: ubuntu-latest
     steps:
-      - name: Apply labels
-        uses: jimschubert/labeler-action@v2
+      - uses: actions/checkout@v4
+      - uses: actions/labeler@v5
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/labeler.yaml
+
       - name: Log result
         if: always()
         run: |
