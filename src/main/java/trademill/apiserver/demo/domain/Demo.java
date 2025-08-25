@@ -18,7 +18,7 @@ public class Demo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
+    @Column(name = "val")
 	private String value;
 
 }

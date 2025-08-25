@@ -1,6 +1,13 @@
+kis:
+  base-url: ${KIS_BASE_URL}
+  app-key: ${KIS_APP_KEY}
+  app-secret: ${KIS_APP_SECRET}
+  account-no: ${KIS_ACCOUNT_NO}
+
 spring:
   datasource:
-    url: jdbc:h2:mem:tm
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:tm;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
     username: sa
     password:
   jpa:
@@ -8,14 +15,11 @@ spring:
       ddl-auto: update
     properties:
       hibernate.jdbc.time_zone: UTC
+
+logging:
+  level:
+    org.springframework.web.reactive.function.client.ExchangeFunctions: DEBUG
+    reactor.netty.http.client: INFO
+
 server:
   port: 8080
-kis:
-  base-url: ${KIS_BASE_URL}
-  app-key: ${KIS_APP_KEY}
-  app-secret: ${KIS_APP_SECRET}
-  cano: ${KIS_CANO}
-  acnt-prdt-cd: ${KIS_ACNT_PRDT_CD}
-  tr-id:
-    buy: ${KIS_TR_ID_BUY}
-    sell: ${KIS_TR_ID_SELL}

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Profile({"local","dev","default"})
+@Profile({"local","default"})
 @Component
 
 // FakeBrokerGateway : 실제 증권사 호출 대신 로컬 개발/테스트용으로 응답을 꾸며주는 구현체(어댑터)
